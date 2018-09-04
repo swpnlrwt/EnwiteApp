@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Geolocation} from '@ionic-native/geolocation';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {DetailsPage} from '../details/details';
 
 @Component({
     selector: 'page-home',
@@ -11,7 +12,7 @@ export class HomePage {
     lat: any;
     long: any;
     restList: any;
-    userKey = '';
+    userKey = '06bd63d97c3d82f26e71d306a701fb7c';
 
     constructor(public navCtrl: NavController, private geolocation: Geolocation, private httpClient: HttpClient) {
         this.geolocation.getCurrentPosition().then((resp) => {
@@ -28,6 +29,7 @@ export class HomePage {
 
     getRestaurantListByLocation() {
         this.httpClient.get(`https://developers.zomato.com/api/v2.1/geocode?lat=${this.lat}&lon=${this.long}`, this.getOptions()).subscribe(data => {
+            console.log(data.nearby_restaurants);
             this.restList = data.nearby_restaurants;
         });
     }
@@ -47,6 +49,12 @@ export class HomePage {
             'user-key': this.userKey
         });
         return {headers: headers};
+    }
+
+    showDetails(details: any) {
+        this.navCtrl.push(DetailsPage, {
+            data: details
+        });
     }
 
 }

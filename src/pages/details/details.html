@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>{{restaurantDetails.name}}</h2>
+  <ion-card>
+<img src="{{restaurantDetails.featured_image}}">
+    <ion-card-content>
+      <ion-card-title>
+        {{restaurantDetails.location.locality_verbose}}
+      </ion-card-title>
+      <p>
+        {{restaurantDetails.location.address}}
+      </p>
+    </ion-card-content>
+    {{restaurantDetails.user_rating?.rating_text}}{{restaurantDetails.user_rating?.aggregate_rating + '/5'}} {{'('+restaurantDetails.user_rating?.votes+')'}}
+  </ion-card>
+</ion-content>

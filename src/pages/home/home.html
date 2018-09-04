@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="data">
   <h2>Enwite</h2>
   <p>
   </p>
@@ -13,8 +13,8 @@
   </p>
   <ion-input placeholder="Restaurant name" (ionChange)="getRestaurantList(inputText.value)" #inputText></ion-input>
   <ion-card *ngFor="let card of restList">
-    <img src="{{card.restaurant.featured_image}}"/>
-    <ion-card-content>
+    <img src="{{card.restaurant.featured_image}}" (click)="showDetails(card)"/>
+    <ion-card-content onclick="showDetails(card)">
       <ion-card-title>
         {{card.restaurant.name}}
       </ion-card-title>
