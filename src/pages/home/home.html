@@ -5,13 +5,22 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h2>Enwite</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    Have a look at the list of restaurants nearby you.
   </p>
+  <ion-input placeholder="Restaurant name" (ionChange)="getRestaurantList(inputText.value)" #inputText></ion-input>
+  <ion-card *ngFor="let card of restList">
+    <img src="{{card.restaurant.featured_image}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{card.restaurant.name}}
+      </ion-card-title>
+      <p>
+        {{card.restaurant.cuisines}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

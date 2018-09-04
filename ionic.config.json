@@ -1,5 +1,7 @@
 {
   "name": "RestList",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
